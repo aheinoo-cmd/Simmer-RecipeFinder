@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fbf8f2" />
+    <meta name="description" content="Find your next favorite meal with a little help from the Recipe Finder." />
+    <title>Simmer — Recipe Finder</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="Simmer home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><path d="M8 13h16l-1.5 12h-13L8 13Z" fill="currentColor"/><path d="M11 11c0-1.5 1-2 1-3.5M16 11c0-1.5 1-2 1-3.5M21 11c0-1.5 1-2 1-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 13h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span>sim<em>mer</em></span>
+        </a>
+        <div class="header-note"><span class="sparkle" aria-hidden="true">✳</span> A little inspiration for what’s cooking</div>
+      </header>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span></span> GOOD FOOD STARTS HERE</p>
+            <h1 id="hero-title">Find something<br /><span>delicious.</span></h1>
+            <p class="hero-description">A craving, a few ingredients, or a happy accident. Let’s find your next favorite.</p>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="art-sun"></div>
+            <div class="art-plate"><div class="art-food"><span></span><span></span><span></span><i></i><b></b></div></div>
+            <div class="art-leaf leaf-one"></div><div class="art-leaf leaf-two"></div>
+            <span class="art-spark art-spark-one">✳</span><span class="art-spark art-spark-two">✦</span>
+            <div class="art-caption">made with<br />a little joy</div>
+          </div>
+        </section>
+
+        <section class="search-panel" aria-label="Find a recipe">
+          <form id="search-form" class="search-form">
+            <label class="search-field" for="search-input">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m15.5 15.5 4.2 4.2"/></svg>
+              <input id="search-input" name="q" type="search" placeholder="What are you craving? Try “chicken”…" autocomplete="off" />
+            </label>
+            <label class="category-field" for="category-select">
+              <span class="sr-only">Filter by category</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10m-7 6h4"/></svg>
+              <select id="category-select" aria-describedby="category-note">
+                <option value="">All categories</option>
+              </select>
+              <span id="category-note" class="sr-only">Categories are loaded from TheMealDB.</span>
+            </label>
+            <button class="button button-search" type="submit">Find recipes <span aria-hidden="true">↗</span></button>
+          </form>
+          <div class="search-bottom">
+            <span id="category-status" class="category-status" aria-live="polite"></span>
+            <div class="quick-ideas" aria-label="Quick searches">
+              <span>Try:</span>
+              <button type="button" class="idea-chip" data-query="Pasta">Pasta</button>
+              <button type="button" class="idea-chip" data-query="Chicken">Chicken</button>
+              <button type="button" class="idea-chip" data-query="Salad">Salad</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="results-section" aria-labelledby="results-title">
+          <div class="results-heading">
+            <div>
+              <p class="eyebrow results-eyebrow">THE GOOD STUFF</p>
+              <h2 id="results-title">A little inspiration</h2>
+              <p id="results-summary" class="results-summary">Pick a craving and let’s get cooking.</p>
+            </div>
+            <div class="results-actions">
+              <button id="favorites-toggle" class="button button-favorites" type="button" aria-pressed="false">
+                <span class="heart-icon" aria-hidden="true">♡</span><span>Favorites</span><span id="favorite-count" class="favorite-count">0</span>
+              </button>
+              <button id="surprise-button" class="button button-surprise" type="button"><span aria-hidden="true">✳</span> Surprise me</button>
+            </div>
+          </div>
+          <div id="results-region" class="results-region" aria-live="polite" aria-busy="false">
+            <div class="empty-state welcome-state">
+              <div class="empty-illustration" aria-hidden="true"><span>✳</span><div>♡</div></div>
+              <h3>Your next favorite is out there.</h3>
+              <p>Search for a dish, browse a category, or leave it to chance.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>© 2026 Aung Hein Oo. All rights reserved.<span aria-hidden="true"></span></span>
+        <span>Recipes from <a href="https://www.themealdb.com/" target="_blank" rel="noreferrer">TheMealDB</a></span>
+      </footer>
+    </div>
+
+    <div id="recipe-modal" class="modal" hidden>
+      <button class="modal-backdrop" type="button" aria-label="Close recipe details"></button>
+      <section class="modal-dialog" role="dialog" aria-modal="true" aria-label="Recipe details" tabindex="-1">
+        <button id="modal-close" class="modal-close" type="button" aria-label="Close recipe details">×</button>
+        <div id="modal-content" class="modal-content" aria-live="polite" aria-busy="false"></div>
+      </section>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
